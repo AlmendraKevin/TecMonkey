@@ -26,10 +26,10 @@ public class ShopController {
         List<Articulo> articulo = service.getArticulos();
         List<Articulo> articuloAux = new ArrayList<Articulo>();
         articulo.forEach(articulo1 -> {
-      //      if(!articulo1.isVentaArticulo()){ //Falta aqui que se va hacer con la venta del articulo bro
-        //        articuloAux.add(articulo1);
-      //      }
-     //   });
+            if(!articulo1.isVentaArticulo()){ //Falta aqui que se va hacer con la venta del articulo bro
+                articuloAux.add(articulo1);
+          }
+        });
 
         model.addAttribute("articulo", articuloAux);
         return "shop";
