@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,700i" rel="stylesheet">
+    <title>Tec Monkey</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"
+            integrity="sha384-Voup2lBiiyZYkRto2XWqbzxHXwzcm4A5RfdfG6466bu5LqjwwrjXCMBQBLMWh7qR"
+            crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: #fafafa;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <header class="py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="col-4">
+                <a href="/usuario/nuevo" class="text-muted">Registrarse</a>
+            </div>
+            <div class="col-4 text-center">
+                <img src="/img/tecM_logo.png">
+                <a href="/" class="text-dark logo">Tec Monkey</a>
+            </div>
+            <div class="col-4 d-flex justify-content-end align-items-center">
+                <a href="#" class="text-muted mx-3"><i class="fas fa-search"></i></a>
+                <a href="/login" class="btn btn-outline-secondary btn-sm">Acceder</a>
+            </div>
+        </div>
+        <hr>
+    </header>
+</div>
+
+<div class="container">
+    <div class="row mt-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="mb-3">Inicio de sesión</h2>
+                    <form id="formUser" action="#" method="post">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" class="form-control"
+                                   id="username" placeholder="Username"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control"
+                                   id="password" placeholder="Password"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Registrar ">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</div>
+</body>
+</html>

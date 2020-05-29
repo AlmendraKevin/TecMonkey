@@ -15,7 +15,8 @@ public class MainController {
         return "Inicio";
     }
 
+
     @RequestMapping("/login")
-    public String login(){return "login";
+    public String login(){return "Login";
     }
 }
