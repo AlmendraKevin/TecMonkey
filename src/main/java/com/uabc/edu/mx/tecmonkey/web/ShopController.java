@@ -43,10 +43,9 @@ public class ShopController {
     @RequestMapping(path = "/ventaArticulo", method = RequestMethod.POST)
     public String saveOrUpdateArticulo(@RequestParam(value = "idArticulo", required = false) Optional<Long> id,
                                      @RequestParam(value = "tipoArticulo", required = true) String tipo,
-                                     @RequestParam(value = "clave", required = true) Integer clave,
+                                     @RequestParam(value = "decripcion", required = true) String descripcion,
                                      @RequestParam(value = "precio", required = true) Integer precio,
                                      @RequestParam(value = "nombreArticulo", required = true) String nombreArticulo,
-                             //        @RequestParam(value = "nombreDelComprador", required = false) String responsable,
                                      @RequestParam(value = "img", required = false) MultipartFile img) {
 
         Articulo entity;
@@ -56,10 +55,10 @@ public class ShopController {
         } else{
             entity = new Articulo(); //empty entity
         }
-        entity.setTipoArticulo(tipo);
-        entity.setClave(clave);
-        entity.setPrecio(precio);
-        entity.setNombreArticulo(nombreArticulo);
+        entity.setTipo(tipo);
+        entity.setDescripcion(descripcion);
+        entity.setCosto(precio);
+        entity.setNombre(nombreArticulo);
         entity.setImg(entity.getImg());
         entity.setStr(entity.getStr());
         service.saveArticulo(entity); //SAVE OR UPDATE SERVICE

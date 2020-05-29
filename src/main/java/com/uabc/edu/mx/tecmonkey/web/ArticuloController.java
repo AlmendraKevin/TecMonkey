@@ -50,13 +50,12 @@ public class ArticuloController {
         return "redirect:/control";
     }
     @RequestMapping(path = "/saveArticulo", method = RequestMethod.POST)
-    public String saveOrUpdateArticulo(@RequestParam(value = "idArticulo", required = false) Optional<Long> id,
-                                     @RequestParam(value = "tipoArticulo", required = true) String tipo,
-                                     @RequestParam(value = "clave", required = true) Integer clave,
-                                     @RequestParam(value = "precio", required = true) Integer precio,
+    public String saveOrUpdateArticulo(@RequestParam(value = "idArticulo") Optional<Long> id,
+                                     @RequestParam(value = "tipoArticulo") String tipo,
+                                     @RequestParam(value = "descripcion") String descripcion,
+                                     @RequestParam(value = "precio") Integer precio,
                                      @RequestParam(value = "nombreArticulo", required = true) String nombreArticulo,
-                         //            @RequestParam(value = "variables", required = true) String NVariable,
-                                     @RequestParam(value = "img", required = false) MultipartFile img) {
+                                     @RequestParam(value = "img") MultipartFile img) {
 
         Articulo entity;
 
@@ -65,10 +64,11 @@ public class ArticuloController {
         } else{
             entity = new Articulo(); //empty entity
         }
-        entity.setTipoArticulo(tipo);
-        entity.setNombreArticulo(nombreArticulo);
-        entity.setPrecio(precio);
-        entity.setClave(clave);
+        entity.setTipo(tipo);
+        entity.setNombre(nombreArticulo);
+        entity.setDescripcion(descripcion);
+        entity.setCosto(precio);
+
 
 
         try {

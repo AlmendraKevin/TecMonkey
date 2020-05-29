@@ -25,18 +25,18 @@ public class ArticuloService {
         return articulo.get();
     }
     public Articulo saveArticulo(Articulo a){
-        if (a.getIdArticulo()==null){
+        if (a.getId()==null){
             a = repository.save(a);
             return a;
         }else{
-            Optional<Articulo> articulo = repository.findById(a.getIdArticulo());
+            Optional<Articulo> articulo = repository.findById(a.getId());
             if(articulo.isPresent()){
                 Articulo newArticulo = articulo.get();
-                newArticulo.setIdArticulo(a.getIdArticulo());
-                newArticulo.setTipoArticulo(a.getTipoArticulo());
-                newArticulo.setNombreArticulo(a.getNombreArticulo());
-                newArticulo.setClave(a.getClave());
-                newArticulo.setPrecio(a.getPrecio());
+                newArticulo.setId(a.getId());
+                newArticulo.setTipo(a.getTipo());
+                newArticulo.setNombre(a.getNombre());
+                newArticulo.setDescripcion(a.getDescripcion());
+                newArticulo.setCosto(a.getCosto());
                 newArticulo.setImg(a.getImg());
 
 

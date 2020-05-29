@@ -11,58 +11,58 @@ import java.util.Arrays;
 public class Articulo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idArticulo;
-    @Column(name = "nombre_Articulo")
-    private String nombreArticulo;
-    @Column(name = "tipo_articulo")
-    private String tipoArticulo;
-    @Column(name = "clave")
-    private Integer clave;
-    @Column(name = "precio")
-    private Integer precio;
+    private Long id;
+    @Column(name = "name")
+    private String nombre;
+    @Column(name = "type")
+    private String tipo;
+    @Column(name = "description")
+    private String descripcion;
+    @Column(name = "cost")
+    private float costo;
     @Column(name = "img")
     private byte[] img;
     @Column(name = "str")
     private String str;
 
-    public Long getIdArticulo() {
-        return idArticulo;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdArticulo(Long idArticulo) {
-        this.idArticulo = idArticulo;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getNombreArticulo() {
-        return nombreArticulo;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreArticulo(String nombreArticulo) {
-        this.nombreArticulo = nombreArticulo;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getTipoArticulo() {
-        return tipoArticulo;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setTipoArticulo(String tipoArticulo) {
-        this.tipoArticulo = tipoArticulo;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public Integer getClave() {
-        return clave;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setClave(Integer clave) {
-        this.clave = clave;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public Integer getPrecio() {
-        return precio;
+    public float getCosto() {
+        return costo;
     }
 
-    public void setPrecio(Integer precio) {
-        this.precio = precio;
+    public void setCosto(float costo) {
+        this.costo = costo;
     }
 
     public byte[] getImg() {
@@ -80,15 +80,17 @@ public class Articulo {
     public void setStr(String str) {
         this.str = str;
     }
-    public  String toString(){
-    return "Articulo{" +
-            "idArticulo=" + idArticulo +
-            ", tipoArticulo='" + tipoArticulo + '\'' +
-            ", nombreArticulo='" + nombreArticulo + '\'' +
-            ", clave='" + clave + '\'' +
-            ", precio=" + precio +
-            ", img=" + Arrays.toString(img) +
-            ", str='" + str + '\'' +
-            '}';
+
+    @Override
+    public String toString() {
+        return "Articulo{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", costo=" + costo +
+                ", img=" + Arrays.toString(img) +
+                ", str='" + str + '\'' +
+                '}';
     }
 }
