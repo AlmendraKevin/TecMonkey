@@ -12,7 +12,7 @@ public class MainController {
     private ArticuloService service;
     @RequestMapping
     public String home(){
-        return "Home";
+        return "Inicio";
     }
 
     @RequestMapping("/login")
