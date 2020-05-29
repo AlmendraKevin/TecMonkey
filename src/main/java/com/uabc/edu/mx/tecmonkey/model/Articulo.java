@@ -1,4 +1,5 @@
 package com.uabc.edu.mx.tecmonkey.model;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,8 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Arrays;
+
 @Entity
-@Table(name="ARTICULO")
+@Table(name = "ARTICULO")
 public class Articulo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +22,8 @@ public class Articulo {
     private String descripcion;
     @Column(name = "cost")
     private float costo;
+    @Column(name = "exist")
+    private Integer existencia;
     @Column(name = "img")
     private byte[] img;
     @Column(name = "str")
@@ -57,6 +61,14 @@ public class Articulo {
         this.descripcion = descripcion;
     }
 
+    public Integer getExistencia() {
+        return existencia;
+    }
+
+    public void setExistencia(Integer existencia) {
+        this.existencia = existencia;
+    }
+
     public float getCosto() {
         return costo;
     }
@@ -81,16 +93,4 @@ public class Articulo {
         this.str = str;
     }
 
-    @Override
-    public String toString() {
-        return "Articulo{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", tipo='" + tipo + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", costo=" + costo +
-                ", img=" + Arrays.toString(img) +
-                ", str='" + str + '\'' +
-                '}';
-    }
 }
