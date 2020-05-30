@@ -37,6 +37,8 @@ public class AuthController {
         }
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         final String jwt = jwtTokenUtil.generateToken(userDetails);
+        System.out.println(ResponseEntity.ok(new AuthenticationResponse(jwt)));
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
+        //sesion manager buscar
     }
 }
