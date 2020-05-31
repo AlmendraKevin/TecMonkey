@@ -1,6 +1,9 @@
 package com.uabc.edu.mx.tecmonkey.security;
 
-import org.springframework.security.core.userdetails.User;
+
+import com.uabc.edu.mx.tecmonkey.model.User;
+import com.uabc.edu.mx.tecmonkey.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -11,9 +14,15 @@ import java.util.ArrayList;
 @Service
 public class MyUserDetailsService implements UserDetailsService {
 
+    @Autowired
+    UserRepository userRepository;
+
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return new User("user", "pass",
-                new ArrayList<>());
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.getUserByUsername(username);
+        if (user ==null){
+            throw new UsernameNotFoundException("No existe el usuario");
+        }
+        return new MyUserDetails(user);
     }
 }
