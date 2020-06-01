@@ -33,7 +33,7 @@
     <header class="py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4">
-
+                <a href="/usuario/nuevo" class="text-muted">Registrarse</a>
             </div>
             <div class="col-4 text-center">
                 <img src="img/tecM_logo.png">
@@ -46,6 +46,7 @@
         </div>
         <hr>
     </header>
+
     <div class="nav-scroller py-1 mb-4">
         <nav class="d-flex flex-wrap justify-content-between">
             <a href="/shop" class="text-muted mx-2 my-1">Tienda</a>
@@ -53,43 +54,46 @@
             <a href="/contacto" class="text-muted mx-2 my-1">Contacto</a>
         </nav>
     </div>
-
-</div>
-<div class="container">
-    <div class="row mt-3">
-
-        <div class="col-6">
-            <div class="card">
-                <img src="/" class="card-img-top img-fluid" alt="">
-                <div class="card-body">
-                    <h3 class="card-title">Titulo</h3>
-                    <p class="card-subtitle text-muted mb-2">Costo</p>
+    <!-- empieza aqui el div -->
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <div class="card flex-md-row mb-4">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-primary">Promociones </strong>
+                    <h3 class="mb-0"><a  class="text-dark"> informacion congruente y precisa </a></h3>
+                    <p class="mb-1 text-muted">Mayo 31</p>
                     <p class="card-text">
-                        Descripcion producto
-                    </p>
-                    <a href="#" class="card-link">Enlace #1</a>
-                </div>
-            </div>
 
+                    </p>
+
+                </div>
+                <img class="card-img-right flex-auto d-none d-lg-block w-100" src="img/SiQuieresPonerUnaImagenn.png" alt="">
+            </div>
         </div>
 
-        <div class="col-6">
-            <div class="card">
-                <img src="/" class="card-img-top img-fluid" alt="">
-                <div class="card-body">
-                    <h3 class="card-title">Titulo</h3>
-                    <p class="card-subtitle text-muted mb-2">Costo</p>
+        <div class="col-md-6">
+            <div class="card flex-md-row mb-4">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-success"> Top de articulos</strong>
+                    <h3 class="mb-0"><a  class="text-dark">Post Destacado</a></h3>
+                    <p class="mb-1 text-muted">Mayo 31</p>
                     <p class="card-text">
-                        Descripcion producto
+                        Aqui le mostraremos el top 10 de articulos
                     </p>
-                    <a href="#" class="card-link">Enlace #1</a>
+
                 </div>
+                <img src="img/SiQuieresPonerUnaImagen.png" alt="" class="card-img-right flex-auto d-none d-lg-block w-100">
             </div>
-
         </div>
-
     </div>
+     <!-- aqui termina el div -->
 </div>
 
+</div>
+
+
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>
