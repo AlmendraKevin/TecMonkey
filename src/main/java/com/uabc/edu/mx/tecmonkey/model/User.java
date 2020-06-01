@@ -9,23 +9,20 @@ import java.util.Set;
 public class User {
 
     @Id
-    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(name = "email")
     private String email;
+    @Column(name = "fullname")
     private String fullname;
+    @Column(name = "username")
     private String username;
+    @Column(name = "password")
     private String password;
+    @Column(name = "active")
     private boolean active;
-
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "users-roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    private Set<Role> roles = new HashSet<>();
+    @Column(name = "role")
+    private String roles;
 
     public Long getId() {
         return id;
@@ -75,11 +72,11 @@ public class User {
         this.active = active;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public String getRoles() {
+        return roles;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public void setRoles(String roles) {
+        this.roles = roles;
     }
 }

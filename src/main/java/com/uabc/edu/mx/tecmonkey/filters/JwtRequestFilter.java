@@ -1,6 +1,6 @@
 package com.uabc.edu.mx.tecmonkey.filters;
 
-import com.uabc.edu.mx.tecmonkey.security.MyUserDetailsService;
+import com.uabc.edu.mx.tecmonkey.service.MyUserDetailsService;
 import com.uabc.edu.mx.tecmonkey.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

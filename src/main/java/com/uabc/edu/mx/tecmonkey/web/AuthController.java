@@ -2,7 +2,7 @@ package com.uabc.edu.mx.tecmonkey.web;
 
 import com.uabc.edu.mx.tecmonkey.model.AuthenticationRequest;
 import com.uabc.edu.mx.tecmonkey.model.AuthenticationResponse;
-import com.uabc.edu.mx.tecmonkey.security.MyUserDetailsService;
+import com.uabc.edu.mx.tecmonkey.service.MyUserDetailsService;
 import com.uabc.edu.mx.tecmonkey.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
