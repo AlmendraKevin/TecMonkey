@@ -19,7 +19,8 @@ public class MainController {
 
 
     @RequestMapping("/login")
-    public String login(){
+    public String login(Model model){
+        model.addAttribute("usuario",new User());
         return "Login";
     }
 }
