@@ -80,4 +80,5 @@ public class ArticuloController {
         service.saveArticulo(entity); //SAVE OR UPDATE SERVICE
         return "redirect:/control";
     }
+
 }

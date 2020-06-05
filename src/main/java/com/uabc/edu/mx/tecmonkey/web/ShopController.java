@@ -57,4 +57,5 @@ public class ShopController {
         service.saveArticulo(entity); //SAVE OR UPDATE SERVICE
         return "redirect:/";
     }
+
 }
