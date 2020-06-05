@@ -12,15 +12,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 
     private ArticuloService service;
+
     @RequestMapping
-    public String home(){
+    public String home() {
         return "Inicio";
     }
 
 
+    @RequestMapping("/contacto")
+    public String contacto() {
+        return "Contacto";
+    }
+
+    @RequestMapping("/promociones")
+    public String promociones() {
+        return "Promociones";
+    }
+
     @RequestMapping("/login")
-    public String login(Model model){
-        model.addAttribute("usuario",new User());
+    public String login(Model model) {
+        model.addAttribute("usuario", new User());
         return "Login";
     }
 
