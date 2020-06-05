@@ -22,7 +22,9 @@ public class ShopController {
     ArticuloService service;
 
     @RequestMapping
-    public String venta (Model model){
+    public String getArticulos (Model model){
+        List<Articulo> articulos = service.getArticulos();
+        model.addAttribute("articulo",articulos);
       return "Catalogo";
     }
     @RequestMapping(path = { "/venta/{id}" })

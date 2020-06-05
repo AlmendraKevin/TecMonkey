@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 @RestController
 public class AuthController {
     @Autowired
@@ -27,7 +31,7 @@ public class AuthController {
     private MyUserDetailsService userDetailsService;
 
     @RequestMapping(value = "/authenticate",method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception{
+    public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest,HttpServletResponse response) throws Exception{
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(),authenticationRequest.getPassword()));
 
@@ -37,8 +41,10 @@ public class AuthController {
         }
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         final String jwt = jwtTokenUtil.generateToken(userDetails);
-        System.out.println(ResponseEntity.ok(new AuthenticationResponse(jwt)));
+        //Cookie cookie = new Cookie("jwt",jwt);
+        //cookie.setMaxAge(43200);
+        //response.addCookie(cookie);
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
-        //sesion manager buscar
+
     }
 }
