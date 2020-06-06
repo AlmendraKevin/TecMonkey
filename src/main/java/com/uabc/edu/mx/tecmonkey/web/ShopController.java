@@ -1,7 +1,9 @@
 package com.uabc.edu.mx.tecmonkey.web;
 
 import com.uabc.edu.mx.tecmonkey.model.Articulo;
+import com.uabc.edu.mx.tecmonkey.model.User;
 import com.uabc.edu.mx.tecmonkey.service.ArticuloService;
+import com.uabc.edu.mx.tecmonkey.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import com.uabc.edu.mx.tecmonkey.service.UsuarioService;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +60,14 @@ public class ShopController {
         entity.setStr(entity.getStr());
         service.saveArticulo(entity); //SAVE OR UPDATE SERVICE
         return "redirect:/";
+    }
+
+    @RequestMapping("/ventauser")
+    public String listaVenta (Model model){
+        List<Articulo> articulos = service.getArticulos();
+
+        model.addAttribute("articulo",articulos);
+        return "ControlVentaAdmin";
     }
 
 }

@@ -32,12 +32,6 @@ public class MainController {
         return "Promociones";
     }
 
-    @RequestMapping("/testeo")
-    public String testing(Model model){
-        List<Articulo> articulo = service.getArticulos();
-        model.addAttribute("articulo", articulo);
-        return "FormArticuloAdmin";
-    }
     @RequestMapping("/login")
     public String login(Model model) {
         model.addAttribute("usuario", new User());

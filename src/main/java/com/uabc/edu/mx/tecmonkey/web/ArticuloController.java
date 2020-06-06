@@ -41,7 +41,7 @@ public class ArticuloController {
     public String editArticuloById(Model model, @PathVariable(value = "id", required = true) Long id) {
         Articulo articulo = service.getArticuloById(id);
         model.addAttribute("articulo", articulo);
-        return "formCreate";
+        return "FormArticuloAdmin";
     }
 
     @GetMapping("/delete/{id}")
@@ -79,6 +79,18 @@ public class ArticuloController {
         entity.setStr(Base64.getEncoder().encodeToString(entity.getImg()));
         service.saveArticulo(entity); //SAVE OR UPDATE SERVICE
         return "redirect:/control";
+    }
+
+    @RequestMapping("/testeo")
+    public String testing(Model model){
+        List<Articulo> articulo = service.getArticulos();
+        model.addAttribute("articulo", articulo);
+        return "ControlArticuloAdmin";
+    }
+    @RequestMapping("/nuevo")
+    public String nuevoarticulo(Model model){
+        model.addAttribute("articulo", new Articulo());
+        return "FormArticuloAdmin";
     }
 
 }
