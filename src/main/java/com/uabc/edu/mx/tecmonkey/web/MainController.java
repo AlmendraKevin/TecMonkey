@@ -1,11 +1,14 @@
 package com.uabc.edu.mx.tecmonkey.web;
 
 
+import com.uabc.edu.mx.tecmonkey.model.Articulo;
 import com.uabc.edu.mx.tecmonkey.model.User;
 import com.uabc.edu.mx.tecmonkey.service.ArticuloService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/")
@@ -34,5 +37,6 @@ public class MainController {
         model.addAttribute("usuario", new User());
         return "Login";
     }
+
 
 }
