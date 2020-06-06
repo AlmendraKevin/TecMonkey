@@ -60,11 +60,10 @@
     </div>
     <div class="row">
         <div class="col">
-            <table class="table table-sm table-hover table-bordered table-responsive-lg">
+            <a href="/articulo/nuevo">Nuevo</a>
+            <table  class="table table-sm table-hover table-bordered table-responsive-lg">
                 <thead>
                 <tr>
-                    <th>Usuario</th>
-                    <th>Correo</th>
                     <th>ID</th>
                     <th>Nombre del articulo</th>
                     <th>Tipo de articulo</th>
@@ -72,10 +71,12 @@
                     <th>Costo</th>
                     <th>Existencia</th>
                     <th>Vista previa</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each=""
+
                 <tr th:each="arti:${articulo}">
                     <td th:text="${arti.id}"></td>
                     <td th:text="${arti.nombre}"></td>
@@ -83,10 +84,10 @@
                     <td th:text="${arti.descripcion}"></td>
                     <td th:text="${arti.costo}"></td>
                     <td th:text="${arti.existencia}"></td>
-                    <td th:text="${arti.img}"></td>
-                    <td><a href="/control/update/" class="btn btn-secondary">Editar</a></td>
+                    <td> <img style="width: 100px; height: 100px" th:src="${'data:image/png;base64,'+arti.str}"/>  </td>
+                    <td><a th:href="@{/articulo/update/{id}(id=${arti.id})}" class="btn btn-secondary">Editar</a></td>
 
-                    <td><a href="/control/delete/" class="btn btn-secondary">Eliminar</a></td>
+                    <td><a th:href="@{/articulo/delete/{id}(id=${arti.id})}" class="btn btn-secondary">Eliminar</a></td>
                 </tr>
                 </tbody>
 
