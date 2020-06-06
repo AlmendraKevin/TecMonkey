@@ -1,11 +1,14 @@
 package com.uabc.edu.mx.tecmonkey.web;
 
 
+import com.uabc.edu.mx.tecmonkey.model.Articulo;
 import com.uabc.edu.mx.tecmonkey.model.User;
 import com.uabc.edu.mx.tecmonkey.service.ArticuloService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/")
@@ -29,10 +32,17 @@ public class MainController {
         return "Promociones";
     }
 
+    @RequestMapping("/testeo")
+    public String testing(Model model){
+        List<Articulo> articulo = service.getArticulos();
+        model.addAttribute("articulo", articulo);
+        return "FormArticuloAdmin";
+    }
     @RequestMapping("/login")
     public String login(Model model) {
         model.addAttribute("usuario", new User());
         return "Login";
     }
+
 
 }
