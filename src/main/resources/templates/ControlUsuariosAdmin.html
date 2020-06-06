@@ -59,6 +59,7 @@
     </div>
     <div class="row">
         <div class="col">
+            <a href="/usuario/new">Nuevo</a>
             <table class="table table-sm table-hover table-bordered table-responsive-lg">
                 <thead>
                 <tr>
@@ -82,8 +83,8 @@
                     <td th:text="${user.fullname}"></td>
                     <td th:text="${user.active} ? 'Activo': 'Desactivado'"></td>
                     <td th:text="${user.roles}"></td>
-                    <td><a href="#" class="btn btn-secondary">Editar</a></td>
-                    <td><a href="#" class="btn btn-secondary">Eliminar</a></td>
+                    <td><a th:href="@{/usuario/update/{id}(id=${user.id})}" class="btn btn-secondary">Editar</a></td>
+                    <td><a th:href="@{/usuario/delete/{id}(id=${user.id})}" class="btn btn-secondary">Eliminar</a></td>
                 </tr>
                 </tbody>
 
