@@ -3,6 +3,7 @@ package com.uabc.edu.mx.tecmonkey.web;
 
 import com.uabc.edu.mx.tecmonkey.model.Articulo;
 import com.uabc.edu.mx.tecmonkey.service.ArticuloService;
+import org.hibernate.type.descriptor.sql.FloatTypeDescriptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/control")
+@RequestMapping("/articulo")
 public class ArticuloController {
     @Autowired
     ArticuloService service;
@@ -23,18 +24,8 @@ public class ArticuloController {
     public String getArticulos(Model model) { //adds the model to load atributes in the html template
         List<Articulo> articulo = service.getArticulos();
         model.addAttribute("articulo", articulo);
-        return "search";
+        return "ControlArticuloAdmin";
 
-    }
-
-    @RequestMapping("/new") //displays empty form
-    public String getAdmin(Model model) {// model to hold data on the frontend
-        model.addAttribute("animal", new Articulo());
-        return "formCreate";
-    }
-    @RequestMapping("/up")
-    public String update(){
-        return "formCreate";
     }
 
     @RequestMapping(path = { "/update/{id}" })
@@ -47,15 +38,16 @@ public class ArticuloController {
     @GetMapping("/delete/{id}")
     public String deleteArticulo(@PathVariable("id") Long id) {
         service.deleteArticulo(id);
-        return "redirect:/control";
+        return "redirect:/articulo";
     }
     @RequestMapping(path = "/saveArticulo", method = RequestMethod.POST)
-    public String saveOrUpdateArticulo(@RequestParam(value = "idArticulo") Optional<Long> id,
-                                     @RequestParam(value = "tipoArticulo") String tipo,
+    public String saveOrUpdateArticulo(@RequestParam(value = "id") Optional<Long> id,
+                                     @RequestParam(value = "tipo") String tipo,
                                      @RequestParam(value = "descripcion") String descripcion,
-                                     @RequestParam(value = "precio") Integer precio,
-                                     @RequestParam(value = "nombreArticulo", required = true) String nombreArticulo,
-                                     @RequestParam(value = "img") MultipartFile img) {
+                                     @RequestParam(value = "costo") String precio,
+                                     @RequestParam(value = "nombre", required = true) String nombreArticulo,
+                                     @RequestParam(value = "img") MultipartFile img,
+                                     @RequestParam(value = "existencia") String existencia   ) {
 
         Articulo entity;
 
@@ -67,9 +59,8 @@ public class ArticuloController {
         entity.setTipo(tipo);
         entity.setNombre(nombreArticulo);
         entity.setDescripcion(descripcion);
-        entity.setCosto(precio);
-
-
+        entity.setCosto(Float.parseFloat(precio));
+        entity.setExistencia(Integer.parseInt(existencia));
 
         try {
             entity.setImg(img.getBytes()); //MultipartFile to byte[] and stored as longblob
@@ -78,15 +69,15 @@ public class ArticuloController {
         }
         entity.setStr(Base64.getEncoder().encodeToString(entity.getImg()));
         service.saveArticulo(entity); //SAVE OR UPDATE SERVICE
-        return "redirect:/control";
+        return "redirect:/articulo";
     }
 
-    @RequestMapping("/testeo")
-    public String testing(Model model){
-        List<Articulo> articulo = service.getArticulos();
-        model.addAttribute("articulo", articulo);
-        return "ControlArticuloAdmin";
-    }
+   // @RequestMapping("/testeo")
+   // public String testing(Model model){
+    //    List<Articulo> articulo = service.getArticulos();
+     //   model.addAttribute("articulo", articulo);
+       // return "ControlArticuloAdmin";
+  //  }
     @RequestMapping("/nuevo")
     public String nuevoarticulo(Model model){
         model.addAttribute("articulo", new Articulo());

@@ -58,31 +58,40 @@
     </div>
     <div class="row">
         <div class="col">
-            <form class="needs-validation" novalidate method="post">
+            <form th:action="@{/articulo/saveArticulo}" th:object="${articulo}" class="needs-validation" novalidate method="post" enctype="multipart/form-data">
                 <div class="form-row">
+                    <div>
+                        <input th:field="*{id}" type="hidden">
+                    </div>
                     <div class="col-6">
                         <label for="vc1">Nombre del articulo</label>
-                        <input type="text" class="form-control" id="vc1" placeholder="Nombrearticulo" required>
+                        <input th:field="*{nombre}" type="text" class="form-control" id="vc1" placeholder="Nombrearticulo" required>
+
                         <div class="valid-feedback">Correcto</div>
                     </div>
                     <div class="col-6">
                         <label for="vc2">Tipo de articulo</label>
-                        <input type="text" class="form-control" id="vc2" placeholder="Tipoarticulo" required>
+                        <input th:field="*{tipo}" type="text" class="form-control" id="vc2" placeholder="Tipoarticulo" required>
                         <div class="valid-feedback">Correcto</div>
                     </div>
                     <div class="col-4">
                         <label for="vc3">Precio</label>
-                        <input type="text" class="form-control" id="vc3" placeholder="Costo" required>
+                        <input th:field="*{costo}" type="number" class="form-control" id="vc3" placeholder="Costo" required>
                         <div class="valid-feedback">Correcto</div>
                     </div>
                     <div class="col-6">
                         <label for="vc4">Descripcion</label>
-                        <input type="text" class="form-control" id="vc4" placeholder="Descripcion" required>
+                        <input th:field="*{descripcion}" type="text" class="form-control" id="vc4" placeholder="Descripcion" required>
                         <div class="valid-feedback">Correcto</div>
                     </div>
                     <div class="col-4">
-                        <label for="vc5">Imagen</label>
-                        <input type="text" class="form-control" id="vc5" placeholder="Imagen" required>
+                        <label for="vc5">Existencia</label>
+                        <input th:field="*{existencia}" type="number" class="form-control" id="vc5" placeholder="Existencia" required>
+                        <div class="valid-feedback">Correcto</div>
+                    </div>
+                    <div class="col-4">
+                        <label for="vc6">Imagen</label>
+                       <input th:field="*{img}" type="file" class="form-control" id="vc6" placeholder="Imagen" required>
                         <div class="valid-feedback">Correcto</div>
                     </div>
                 </div>
