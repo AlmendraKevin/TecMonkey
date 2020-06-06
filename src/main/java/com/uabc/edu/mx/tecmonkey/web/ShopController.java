@@ -29,21 +29,22 @@ public class ShopController {
     public String getArticulos (Model model){
         List<Articulo> articulos = service.getArticulos();
         model.addAttribute("articulo",articulos);
-      return "Catalogo";
+      return "ControlVentaAdmin";
     }
     @RequestMapping(path = { "/venta/{id}" })
     public String editArticuloById(Model model, @PathVariable(value = "id", required = true) Long id) {
         Articulo articulo = service.getArticuloById(id);
         model.addAttribute("articulo", articulo);
-        return "ventaFormato";
+        return "FormVenta";
     }
     @RequestMapping(path = "/ventaArticulo", method = RequestMethod.POST)
-    public String saveOrUpdateArticulo(@RequestParam(value = "idArticulo", required = false) Optional<Long> id,
-                                     @RequestParam(value = "tipoArticulo", required = true) String tipo,
-                                     @RequestParam(value = "decripcion", required = true) String descripcion,
-                                     @RequestParam(value = "precio", required = true) Integer precio,
-                                     @RequestParam(value = "nombreArticulo", required = true) String nombreArticulo,
-                                     @RequestParam(value = "img", required = false) MultipartFile img) {
+    public String saveOrUpdateArticulo(@RequestParam(value = "id", required = false) Optional<Long> id,
+                                     @RequestParam(value = "tipo", required = true) String tipo,
+                                     @RequestParam(value = "descripcion", required = true) String descripcion,
+                                     @RequestParam(value = "costo", required = true)  String precio,
+                                     @RequestParam(value = "nombre", required = true) String nombreArticulo,
+                                     @RequestParam(value = "img", required = false) MultipartFile img,
+                                     @RequestParam(value = "existencia", required = false) String existencia){
 
         Articulo entity;
 
@@ -54,12 +55,13 @@ public class ShopController {
         }
         entity.setTipo(tipo);
         entity.setDescripcion(descripcion);
-        entity.setCosto(precio);
+        entity.setCosto(Float.parseFloat(precio));
         entity.setNombre(nombreArticulo);
         entity.setImg(entity.getImg());
         entity.setStr(entity.getStr());
+        entity.setExistencia(Integer.parseInt(existencia));
         service.saveArticulo(entity); //SAVE OR UPDATE SERVICE
-        return "redirect:/";
+        return "redirect:/shop";
     }
 
     @RequestMapping("/ventauser")

@@ -69,9 +69,14 @@
 
                         <div class="valid-feedback">Correcto</div>
                     </div>
-                    <div class="col-6">
-                        <label for="vc2">Tipo de articulo</label>
-                        <input th:field="*{tipo}" type="text" class="form-control" id="vc2" placeholder="Tipoarticulo" required>
+                    <div class="col-5">
+                        <label>Tipo de articulo</label>
+                        <select th:field="*{tipo}">
+                            <option value="" disabled selected>Tipos</option>
+                            <option value="Componente">Componente</option>
+                            <option value="Software">Software</option>
+                            <option value="Periferico">Periferico</option>
+                        </select>
                         <div class="valid-feedback">Correcto</div>
                     </div>
                     <div class="col-4">

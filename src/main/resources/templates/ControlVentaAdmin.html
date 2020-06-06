@@ -72,18 +72,26 @@
                     <th>Costo</th>
                     <th>Existencia</th>
                     <th>Vista previa</th>
+                    <th>Editar</th>
+
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="arti:${articulo}">
+                    <td></td>
+                    <td></td>
+
                     <td th:text="${arti.id}"></td>
                     <td th:text="${arti.nombre}"></td>
                     <td th:text="${arti.tipo}"></td>
                     <td th:text="${arti.descripcion}"></td>
                     <td th:text="${arti.costo}"></td>
                     <td th:text="${arti.existencia}"></td>
-                    <td th:text="${arti.img}"></td>
-                    <td><a href="#" class="btn btn-secondary">Eliminar</a></td>
+                    <td> <img style="width: 100px; height: 100px" th:src="${'data:image/png;base64,'+arti.str}"/>  </td>
+
+                    <td><a th:href="@{/shop/venta/{id}(id=${arti.id})}" class="btn btn-secondary">Editar</a></td>
+
+
                 </tr>
                 </tbody>
 
