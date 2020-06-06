@@ -1,8 +1,7 @@
 package com.uabc.edu.mx.tecmonkey.model;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+
 
 @Entity
 @Table(name = "users")

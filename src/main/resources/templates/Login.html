@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,9 +49,18 @@
     <div class="row mt-3">
         <div class="col">
             <div class="card">
+                <div class="card-header">
+                    <div th:if="${param.error}">
+                        Usuario o cantraseña no validos
+                    </div>
+                </div>
+                <div th:if="${param.logout}">
+                    Usted se ha desconectado
+                </div>
+
                 <div class="card-body">
                     <h2 class="mb-3">Inicio de sesión</h2>
-                    <form id="formUser" action="#" method="post">
+                    <form id="formUser" th:action="@{/login}" method="post">
                         <div class="form-group">
                             <label>Username</label>
                             <input  type="text" class="form-control"
@@ -64,7 +73,7 @@
                                    id="password" placeholder="Password"/>
                         </div>
                         <div class="form-group">
-                            <input type="button" onclick="f()" class="btn btn-primary" value="Iniciar Sesion ">
+                            <input type="submit" class="btn btn-primary" value="Iniciar Sesion ">
                         </div>
                     </form>
 
@@ -75,25 +84,6 @@
         </div>
 
     </div>
-    <script>
-
-        function f() {
-            var userElement = document.getElementById('username');
-            var passwordElement = document.getElementById('password');
-            var user = userElement.value;
-            var password = passwordElement.value;
-            var formData = JSON.stringify({ username: user, password: password });
-            $.ajax({
-                type: "POST",
-                url: "/authenticate",
-                data: formData,
-                success: function(){},
-                dataType: "json",
-                contentType : "application/json"
-            });
-        }
-    </script>
-
     <script src="/js/jquery-3.2.1.min.js"></script>
     <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
